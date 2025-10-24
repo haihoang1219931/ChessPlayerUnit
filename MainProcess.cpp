@@ -9,8 +9,20 @@ MainProcess::MainProcess(QThread *parent) :
     memset(m_renderData,0,sizeof(m_renderData));
     m_mutex = new QMutex;
     m_pauseCond = new QWaitCondition;
+    m_activeState = CPU_STATE_SHOW_FACE;
 }
 
+int MainProcess::activeState()
+{
+    return m_activeState;
+}
+
+void MainProcess::setActiveState(int activeState)
+{
+    if(m_activeState == activeState) return;
+    m_activeState = activeState;
+    Q_EMIT activeStateChanged();
+}
 MainProcess::~MainProcess()
 {
     stopService();
@@ -45,8 +57,37 @@ void MainProcess::run() {
         if(m_pause)
             m_pauseCond->wait(m_mutex); // in this place, your thread will stop to execute until someone calls resume
         m_mutex->unlock();
+        switch (m_activeState) {
+        case CPU_STATE_SHOW_FACE:{
+            showFace();
+        }
+            break;
+        case CPU_STATE_SELECT_LEVEL:{
+            showLevel();
+        }
+            break;
+        case CPU_STATE_PLAYING:{
+            showPlaying();
+        }
+            break;
+        }
     }
 }
+void MainProcess::showFace()
+{
+    //if receive button signal => switch to select level
+}
+
+void MainProcess::showLevel()
+{
+    //if receive button signal => switch to play
+}
+
+void MainProcess::showPlaying()
+{
+    // if playing finished => switch state to show face with result
+}
+
 void MainProcess::startService() {
     if(m_thread != nullptr)
         m_thread->start();

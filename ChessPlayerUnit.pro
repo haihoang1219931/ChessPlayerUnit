@@ -7,12 +7,18 @@ CONFIG += c++11
 RESOURCES += qml.qrc
 QML_DESIGNER_IMPORT_PATH =
 SOURCES += main.cpp  \
+    FaceAnimator.cpp \
+    FaceItem.cpp \
+    LevelSelector.cpp \
     VideoDisplay/I420Render.cpp \
     VideoDisplay/VideoRender.cpp \
     MainProcess.cpp \
     ChessController.cpp
 
 HEADERS += \
+    FaceAnimator.h \
+    FaceItem.h \
+    LevelSelector.h \
     VideoDisplay/I420Render.h \
     VideoDisplay/VideoRender.h \
     MainProcess.h \

@@ -53,7 +53,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "MainProcess.h"
-
+#include "FaceItem.h"
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -61,6 +61,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
     qmlRegisterType<VideoRender>("diy", 1, 0, "VideoRender");
     qmlRegisterType<MainProcess>("diy", 1, 0, "MainProcess");
+    qmlRegisterType<FaceItem>("diy", 1, 0, "FaceItem");
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
             return -1;

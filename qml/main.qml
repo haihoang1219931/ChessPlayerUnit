@@ -51,6 +51,7 @@
 import QtQuick 2.7
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.3
 import diy 1.0
 ApplicationWindow {
     id: wroot
@@ -58,12 +59,32 @@ ApplicationWindow {
     width: 1280
     height: 780
     title: qsTr("Chess Simulator")
+    Rectangle {
+        anchors.fill: parent
+        color: "#ffffff"
 
+        FaceItem {
+            id: face
+            anchors.centerIn: parent
+            width: parent.width * 0.9
+            height: parent.height * 0.9
+        }
+    }
     MainProcess {
         id: mainProcess
     }
+//    StackLayout {
+//        currentIndex: mainProcess.activeState
+//        Face {
 
-    Component.onCompleted: {
-        console.log("GUI started")
-    }
+//        }
+
+//        SelectLevel {
+
+//        }
+
+//        PlayerTimer {
+
+//        }
+//    }
 }

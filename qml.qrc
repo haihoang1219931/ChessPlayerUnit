@@ -3,5 +3,8 @@
         <file>qml/main.qml</file>
         <file>qml/ChessBoard.qml</file>
         <file>ChessSupport.js</file>
+        <file>qml/Face.qml</file>
+        <file>qml/PlayerTimer.qml</file>
+        <file>qml/SelectLevel.qml</file>
     </qresource>
 </RCC>
